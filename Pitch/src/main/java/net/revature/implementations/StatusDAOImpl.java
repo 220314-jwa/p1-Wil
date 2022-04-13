@@ -14,6 +14,12 @@ public class StatusDAOImpl implements StatusDAO {
 	}
 
 	@Override
+	public int getById(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
 	public Set<Status> getAll() {
 		// TODO Auto-generated method stub
 		return null;
@@ -32,16 +38,11 @@ public class StatusDAOImpl implements StatusDAO {
 	}
 
 	@Override
-	public Status getByName(int status_name) {
+	public Status getByName(String status) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public int getById(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 	
-
 }
+

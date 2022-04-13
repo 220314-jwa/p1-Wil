@@ -9,7 +9,7 @@ public interface PersonDAO extends GenericDAO <Person> {
 
 	public Person getUserById(int id);
 	
-	public Person geyById(int id);
+	public int getById(int id);
 
 	public void deleteById(int deleteId);
 

@@ -25,8 +25,8 @@ public class PersonDAOImpl implements PersonDAO {
 	public int create(Person dataToAdd) {
 
 		// This stores our sql command.
-		String sql = "insert into person (id,first_name, last_name, role_id,role_name, username, password)"
-				+ "values(default, ?,?,?,?,?,?);";
+		String sql = "insert into person (id,firstName,lastName, role,username, password)"
+				+ "values(default, ?,?,?,?,?);";
 
 		// Now let's generate the Prepared Statement so the database can now what
 		// exactly we are asking for and what to give us
@@ -36,14 +36,15 @@ public class PersonDAOImpl implements PersonDAO {
 
 		try {
 			// int generatedId=0;
+			
 
 			PreparedStatement preparedStatement = connection.prepareStatement(sql,
 					PreparedStatement.RETURN_GENERATED_KEYS);
 			// set up the fields
-			preparedStatement.setString(1, dataToAdd.getFirst_name());
-			preparedStatement.setString(2, dataToAdd.getLast_name());
-			preparedStatement.setString(3, dataToAdd.getRole_id());
-			preparedStatement.setString(4, dataToAdd.getRole_name());
+			preparedStatement.setInt(1, dataToAdd.getId());
+			preparedStatement.setString(2, dataToAdd.getFirstName());
+			preparedStatement.setString(3, dataToAdd.getLastName());
+			preparedStatement.setString(4, dataToAdd.getRole());
 			preparedStatement.setString(5, dataToAdd.getUsername());
 			preparedStatement.setString(6, dataToAdd.getPassword());
 
@@ -54,7 +55,6 @@ public class PersonDAOImpl implements PersonDAO {
 			ResultSet resultSet = preparedStatement.getGeneratedKeys();
 			if (count > 0) {
 				System.out.println("One user added to the database");
-
 				resultSet.next();
 				int id = resultSet.getInt(1);
 
@@ -74,19 +74,24 @@ public class PersonDAOImpl implements PersonDAO {
 
 	@Override
 	public void update(Person dataToUpdate) {
-		String sql = "update pet set first_name=?, last_name=?, role_id=? , role_name=?, username=?, password=?";
+		String sql = "update person set firstName=?, lastName=?, role=? , username=?, password=?" + "where id=?;";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, dataToUpdate.getFirst_name());
-			preparedStatement.setString(1, dataToUpdate.getLast_name());
-			preparedStatement.setString(1, dataToUpdate.getRole_id());
-			preparedStatement.setString(1, dataToUpdate.getRole_name());
-			preparedStatement.setString(1, dataToUpdate.getUsername());
-			preparedStatement.setString(1, dataToUpdate.getPassword());
+			preparedStatement.setString(1/*
+											 * This means, first column and it can be replaced by the column name
+											 */, dataToUpdate.getFirstName());
+			preparedStatement.setString(2, dataToUpdate.getLastName());
+			preparedStatement.setString(3, dataToUpdate.getRole());
+			preparedStatement.setString(4, dataToUpdate.getUsername());
+			preparedStatement.setString(5, dataToUpdate.getPassword());
+			preparedStatement.setInt(6, dataToUpdate.getId());
 
-			int count = preparedStatement.executeUpdate();
-			if (count != 1) {
+			int rowsUpdated = preparedStatement.executeUpdate();
+
+			if (rowsUpdated == 1) {
+				System.out.println("User info has been updated");
+			} else if (rowsUpdated != 1) {
 				System.out.println("Oops, something went wrong with the update");
 			}
 
@@ -148,14 +153,12 @@ public class PersonDAOImpl implements PersonDAO {
 	private static Person parseResultSet(ResultSet resultSet) throws SQLException {
 		Person person = new Person();
 		// do something with the return value
-		// person.setId(resultSet.getInt(1));
-		person.setFirst_name(resultSet.getString(1));
-		person.setLast_name(resultSet.getString(2));
-		person.setRole_id(resultSet.getString(3));
-		person.setRole_name(resultSet.getString(4));
-		person.setRole_id(resultSet.getString(5));
-		person.setUsername(resultSet.getString(6));
-		person.setPassword(resultSet.getString(7));
+		person.setId(resultSet.getInt(1));
+		person.setFirstName(resultSet.getString(2));
+		person.setLastName(resultSet.getString(3));
+		person.setRole(resultSet.getString(4));
+		person.setUsername(resultSet.getString(5));
+		person.setPassword(resultSet.getString(6));
 
 		return person;
 	}
@@ -208,20 +211,14 @@ public class PersonDAOImpl implements PersonDAO {
 		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public Person geyById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public void deleteById(int id) {
 		String sql = "delete from person where id=?";
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setInt(1, id);
-			int count=preparedStatement.executeUpdate();
-			if (count!=1) {
+			int count = preparedStatement.executeUpdate();
+			if (count != 1) {
 				System.out.println("Something went wrong with the deletion");
 			}
 		} catch (SQLException e) {

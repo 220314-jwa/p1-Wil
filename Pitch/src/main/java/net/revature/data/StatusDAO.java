@@ -4,5 +4,5 @@ import net.revature.models.Status;
 
 public interface StatusDAO extends GenericDAO <Status> {
 
-	public Status getByName(int status_name);
+	public Status getByName(String status);
 }

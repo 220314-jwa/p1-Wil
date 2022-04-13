@@ -2,7 +2,7 @@ package net.revature.data;
 
 import java.util.Set;
 
-import net.revature.models.Person;
+import net.revature.models.Story;
 
 /*The DAO, which stands for Data Access Object is an object 
  * created specifically for accessing data, particularly

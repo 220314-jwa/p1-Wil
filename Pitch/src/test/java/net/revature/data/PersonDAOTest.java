@@ -23,11 +23,11 @@ public void getValidPersonById()
 @Test
 public void testUpdate() {
 	Person personUp = personDAO.getUserById(6);
-	personUp.setFirst_name("wil");
+	personUp.setFirstName("wil");
 	personDAO.update(personUp);
 	Person person=personDAO.getUserById(6);
 	System.out.println(person);
-	assertEquals("wil",person.getFirst_name());	
+	assertEquals("wil",person.getFirstName());	
 }
 
 @Test

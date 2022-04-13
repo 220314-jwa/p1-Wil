@@ -6,47 +6,55 @@ import java.util.List;
 import java.util.Objects;
 
 public class Story {
-	private long pitch_id;
-	private long author_id;
-	private long genre_id;
+    private int id; 
+	private String author; 
+	private String editor; 
+	private String genre;
 	private String title;
-	private String blurb;
 	private String description;
+	private int storyLength; 
 	private List<Story> stories;
 
 	public Story() {
-		pitch_id=123456;
-		author_id=12345;
-		genre_id=73648;
+	    author= "author";
+	    editor="editor";
+	    genre="my genre";
 		title="My First Story Pitch";
-		blurb="My Story blurb";
 		description="My story description";
+		storyLength= 123;
 		stories=new ArrayList<>();			
+}
 
+	public int getId() {
+		return id;
 	}
 
-	public long getPitch_id() {
-		return pitch_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setPitch_id(long pitch_id) {
-		this.pitch_id = pitch_id;
+	public String getAuthor() {
+		return author;
 	}
 
-	public long getAuthor_id() {
-		return author_id;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public void setAuthor_id(long author_id) {
-		this.author_id = author_id;
+	public String getEditor() {
+		return editor;
 	}
 
-	public long getGenre_id() {
-		return genre_id;
+	public void setEditor(String editor) {
+		this.editor = editor;
 	}
 
-	public void setGenre_id(long genre_id) {
-		this.genre_id = genre_id;
+	public String getGenre() {
+		return genre;
+	}
+
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	public String getTitle() {
@@ -57,20 +65,20 @@ public class Story {
 		this.title = title;
 	}
 
-	public String getBlurb() {
-		return blurb;
-	}
-
-	public void setBlurb(String blurb) {
-		this.blurb = blurb;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public int getStoryLength() {
+		return storyLength;
+	}
+
+	public void setStoryLength(int storyLength) {
+		this.storyLength = storyLength;
 	}
 
 	public List<Story> getStories() {
@@ -83,7 +91,7 @@ public class Story {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(author_id, blurb, description, genre_id, pitch_id, stories, title);
+		return Objects.hash(author, description, editor, genre, id, stories, storyLength, title);
 	}
 
 	@Override
@@ -95,18 +103,24 @@ public class Story {
 		if (getClass() != obj.getClass())
 			return false;
 		Story other = (Story) obj;
-		return author_id == other.author_id && Objects.equals(blurb, other.blurb)
-				&& Objects.equals(description, other.description) && genre_id == other.genre_id
-				&& pitch_id == other.pitch_id && Objects.equals(stories, other.stories)
-				&& Objects.equals(title, other.title);
+		return Objects.equals(author, other.author) && Objects.equals(description, other.description)
+				&& Objects.equals(editor, other.editor)
+				&& Objects.equals(genre, other.genre) && id == other.id && Objects.equals(stories, other.stories)
+				&& storyLength == other.storyLength && Objects.equals(title, other.title);
 	}
 
 	@Override
 	public String toString() {
-		return "Story [pitch_id=" + pitch_id + ", author_id=" + author_id + ", genre_id=" + genre_id
-				+ ", tentative_title=" +title + ", blurb=" + blurb + ", description=" + description
-				+ ", stories=" + stories + "]";
+		return "Story [id=" + id + ", author=" + author + ", editor=" + editor + ", genre=" + genre + ", title=" + title
+				+ ", description=" + description + ", storyLength="
+				+ storyLength + ", stories=" + stories + "]";
 	}
+
+	
+	
+}
+
+
 	
 
-}
+	

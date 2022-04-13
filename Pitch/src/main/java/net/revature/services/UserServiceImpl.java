@@ -3,12 +3,10 @@ package net.revature.services;
 import java.util.Set;
 
 import net.revature.data.PersonDAO;
-import net.revature.data.StatusDAO;
 import net.revature.data.StoryDAO;
 import net.revature.exceptions.IncorrectCredentialsException;
 import net.revature.exceptions.UserNameAlreadyExistsException;
 import net.revature.implementations.PersonDAOImpl;
-import net.revature.implementations.StatusDAOImpl;
 import net.revature.implementations.StoryDAOImpl;
 import net.revature.models.Person;
 import net.revature.models.Story;
@@ -49,8 +47,8 @@ public class UserServiceImpl implements UserService {
 	}
 	@Override
 	public Person getUserById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return personDAO.getUserById(id);
 	}
 	@Override
 	public int submitAStory(Story newStory) {
@@ -61,6 +59,12 @@ public class UserServiceImpl implements UserService {
 	public Set<Story> viewSubmittedStories(String title) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public StoryDAO getStoryDAO() {
+		return storyDAO;
+	}
+	public void setStoryDAO(StoryDAO storyDAO) {
+		this.storyDAO = storyDAO;
 	}
 
 	//@Override
