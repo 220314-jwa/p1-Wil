@@ -103,7 +103,7 @@ public class StoryDAOImpl implements StoryDAO {
 	}
 
 	@Override
-	public int getById(int id) {
+	public Story getById(int id) {
 		Story story = null;
 
 		String sql = "SELECT * FROM story where id=?";
@@ -117,7 +117,7 @@ public class StoryDAOImpl implements StoryDAO {
 
 			if (resultSet.next()) {
 				story = StoryDAOImpl.parseResultSet(resultSet);
-				return id;
+				return story;
 			} else {
 				System.out.println("Something went wrong when querying the user");
 
@@ -127,7 +127,7 @@ public class StoryDAOImpl implements StoryDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return id;
+		return story;
 	}
 
 }

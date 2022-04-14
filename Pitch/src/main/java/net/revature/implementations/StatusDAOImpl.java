@@ -4,6 +4,7 @@ import java.util.Set;
 
 import net.revature.data.StatusDAO;
 import net.revature.models.Status;
+import net.revature.models.Story;
 
 public class StatusDAOImpl implements StatusDAO {
 
@@ -14,9 +15,9 @@ public class StatusDAOImpl implements StatusDAO {
 	}
 
 	@Override
-	public int getById(int id) {
+	public Story getById( int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override

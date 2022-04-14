@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Set;
 import net.revature.data.PersonDAO;
 import net.revature.models.Person;
+import net.revature.models.Story;
 import net.revature.services.ConnectionFactory;
 
 public class PersonDAOImpl implements PersonDAO {
@@ -206,8 +207,8 @@ public class PersonDAOImpl implements PersonDAO {
 	}
 
 	@Override
-	public int getById(int id) {
-		return id;
+	public Story getById(int id) {
+		return null;
 		// TODO Auto-generated method stub
 	}
 

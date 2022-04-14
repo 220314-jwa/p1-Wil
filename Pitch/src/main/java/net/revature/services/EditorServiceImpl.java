@@ -9,22 +9,19 @@ public class EditorServiceImpl implements EditorService{
 
 	@Override
 	public Story reviewStory(Story storyToReview) {
-		// TODO Auto-generated method stub
+		Story storyFromDb=storyDAO.getById(storyToReview.getId());
+		
+		if(storyFromDb !=null) {
+			storyDAO.update(storyToReview);
+			return storyDAO.getById(storyToReview.getId());
+		}
 		return null;
 	}
 
 	@Override
-	public int getStoryById(int id) {
+	public Story getStoryById(int id) {
 		// TODO Auto-generated method stub
 		return storyDAO.getById(id);
-	}
-
-	public StoryDAO getStoryDAO() {
-		return storyDAO;
-	}
-
-	public void setStoryDAO(StoryDAO storyDAO) {
-		this.storyDAO = storyDAO;
 	}
 
 }

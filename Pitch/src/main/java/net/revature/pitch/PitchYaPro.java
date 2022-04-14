@@ -47,7 +47,7 @@ public class PitchYaPro {
 		app.get("/story/{id}", ctx -> {
 		int id = Integer.parseInt(ctx.pathParam("id"));
 			StoryDAO storyDAO = DAOFactory.getStoryDAO();
-			int resultStory = storyDAO.getById(id);
+			Story resultStory = storyDAO.getById(id);
 			ctx.json(resultStory);
 
 		});

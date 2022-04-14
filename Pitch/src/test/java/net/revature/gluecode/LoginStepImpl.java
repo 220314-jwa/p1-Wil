@@ -1,4 +1,4 @@
-package com.revature.gluecode;
+package net.revature.gluecode;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

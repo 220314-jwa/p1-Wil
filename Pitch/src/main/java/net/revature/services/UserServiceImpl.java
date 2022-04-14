@@ -53,32 +53,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int submitAStory(Story newStory) {
 		// TODO Auto-generated method stub
-		return 0;
+		return storyDAO.create(newStory);
 	}
 	@Override
 	public Set<Story> viewSubmittedStories(String title) {
-		// TODO Auto-generated method stub
-		return null;
+	// TODO Auto-generated method stub
+		return storyDAO.getAll();
 	}
-	public StoryDAO getStoryDAO() {
-		return storyDAO;
-	}
-	public void setStoryDAO(StoryDAO storyDAO) {
-		this.storyDAO = storyDAO;
-	}
-
-	//@Override
-//	public Person updateUser(Person userToUpdate) {
-//		if ( personDAO.getById(userToUpdate.getId())!=null) {
-//			personDAO.update(userToUpdate);
-//			userToUpdate=personDAO.getById(userToUpdate.getId());
-//			return userToUpdate;
-//		}
-//		
-//		return null;
-//	}
-
-
 
 
 

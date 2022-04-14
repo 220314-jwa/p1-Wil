@@ -21,7 +21,8 @@ import net.revature.models.Story;
 public interface GenericDAO<D>{
 		
 		public int create( D dataToAdd);
-		public int getById(int id);
+		
+		public Story getById(int id);
 		public Set<D> getAll();
 		public void update (D dataToUpdate);
 		public void delete ( D dataToDelete);
