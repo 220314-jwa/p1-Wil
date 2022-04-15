@@ -69,11 +69,7 @@
    And the user clicks the login button
    Then an invalid input message will be displayed 
    
-   Examples
-   
-   |username|password|
-   |a       |p4ssword|
-   |user123 |a       |
+
    
    
    

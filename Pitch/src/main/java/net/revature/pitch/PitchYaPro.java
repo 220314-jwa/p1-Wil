@@ -6,18 +6,29 @@ import net.revature.data.StoryDAO;
 import net.revature.models.Person;
 import net.revature.models.Story;
 import net.revature.services.UserService;
+import net.revature.services.UserServiceImpl;
+
+import java.util.Map;
+
 import io.javalin.Javalin;
 import io.javalin.http.HttpCode;
 
 public class PitchYaPro {
 
-	private static UserService userService;
+	private static UserService userService = new UserServiceImpl();  
 
 	public static void main(String[] args) {
-
-		Javalin app = Javalin.create().start(8081);
 	
 		
+		
+//		Javalin app = Javalin.create().start(8080);
+
+		Javalin app = Javalin.create(config -> {
+			config.enableCorsForAllOrigins();
+		});
+
+		app.start(8081);
+
 //		app.post("/person", ctx -> {
 //
 //			Person person = ctx.bodyAsClass(net.revature.models.Person.class);
@@ -29,9 +40,33 @@ public class PitchYaPro {
 //			ctx.result("the person id is " + id);
 //
 //		});
-		
-		
-		app.post("/story", ctx -> {
+//		app.post("/login", ctx -> {
+//
+//			Person person = ctx.bodyAsClass(net.revature.models.Person.class);
+//
+//			PersonDAO personDAO = DAOFactory.getPersonDAO();
+//
+//			ctx.json(person);
+//
+//		});
+//		
+		app.post("/login", ctx -> {
+			Map<String, String> credentials = ctx.bodyAsClass(Map.class);
+			String username = credentials.get("username");
+			System.out.println(username);
+			String password = credentials.get("password");
+			System.out.println(password);
+
+			Person person = userService.login(username, password);
+
+			if (person != null) {
+				ctx.json(person);
+			} else {
+				ctx.status(HttpCode.UNAUTHORIZED);
+			}
+		});
+
+		app.post("submitAstory/story", ctx -> {
 
 			Story story = ctx.bodyAsClass(net.revature.models.Story.class);
 
@@ -43,17 +78,17 @@ public class PitchYaPro {
 
 		});
 		
-		
+
 		app.get("/story/{id}", ctx -> {
-		int id = Integer.parseInt(ctx.pathParam("id"));
+			int id = Integer.parseInt(ctx.pathParam("id"));
 			StoryDAO storyDAO = DAOFactory.getStoryDAO();
 			Story resultStory = storyDAO.getById(id);
 			ctx.json(resultStory);
-
 		});
 		
 		
 		
+
 		// Getting all the users:both authors and editors
 //		app.get("/person/{id}", ctx -> {
 //			int id = Integer.parseInt(ctx.pathParam("id"));
@@ -62,7 +97,7 @@ public class PitchYaPro {
 //			ctx.json(resultPerson);
 //
 //		});
-		
+
 //		//deleting users
 //		app.delete("/person/{id}", ctx->{
 //				int deleteId=Integer.parseInt(ctx.queryParam("id"));
@@ -70,8 +105,7 @@ public class PitchYaPro {
 //				personDAO.deleteById(deleteId);*/
 //				
 //	}); 
-		
-		 
+
 		// update users
 //		app.put("/person", ctx -> {
 //			//int userId=Integer.parseInt(ctx.pathParam("id"));

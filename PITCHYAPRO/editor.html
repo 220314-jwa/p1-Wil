@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous">
+      <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+
+     <link rel="stylesheet" href="login.css">
+     <link rel="stylesheet" href="editor.css">
+
+     <title>Pitch System Management</title>
+</head>
+<body>
+    <!--The .navbar-expand-lg will ensure that this flexible
+    and it can expand once it reaches a certain width everything will expand,you can change lg ( large) to md (md) check layout breakpoints to see more.  For the .bg-dark is for color and navbar-dark will make the text light since teh navbar is already dark-->
+   <nav class="navbar navbar-expand-lg bg-black navbar-dark text-light"> 
+       <div class="container">
+       <a href="pitchyapro.html" class="pyp-brand"> PITCHYAPRO</a>
+
+       <div class="collapse navbar-collapse">
+           <ul class="navbar-nav ms-auto">
+             <li class="navbar-item">
+              <i class="bi-person-circle"></i>
+                <a id="login" href="#login" class="navbar-link">Login</a>
+            </li> 
+           </ul>
+       </div>
+       </div>
+   </nav>
+
+ <section class=" container">
+ 
+    <div id="info">  <h1> Welcome</h1>
+    <p>Below is a table of all the submitted stories. Please select to see and pick the ones you would like to edit. </p>
+    </div>
+       <table id="storyTable">
+         <tr>   
+        <th>id</th>
+        <th>author</th>
+        <th>editor</th>
+        <th>genre</th>
+        <th>title</th>
+        <th>description</th>
+        <th>storyLength</th>  
+        <th id="status">
+      <button id="status-approve" style="background-color:green">approve</button> 
+    <button id="status status-pending" style="background-color:yellow">pending</button>
+    <button id="status status" style="background-color:red">rejected</button></th> 
+      </tr>
+       
+       </table>
+
+</section>
+
+<script src="https://use.fontawesome.com/6d1f46d2b5.js"></script>
+
+   <script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+   crossorigin="anonymous"
+ ></script>
+<script src="editor.js"></script>
+
+</body>
+</html>

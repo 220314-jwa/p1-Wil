@@ -1,0 +1,80 @@
+
+.pyp-brand{
+    padding: 5px;
+    border-style: solid;
+    border-color: rgba(24,218,205,1);
+    color:rgb(0, 102, 255);
+    font-size: larger;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    background: -webkit-linear-gradient(90deg, rgba(24,218,205,1) 30%, rgba(20,148,230,1) 49%, rgba(0,228,255,1) 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.pyp-brand:hover{
+    background: -webkit-linear-gradient(90deg, rgb(114, 165, 162) 30%, rgb(7, 195, 237) 49%, rgba(0,228,255,1) 78%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+a{text-decoration: none !important;
+    color:rgba(20,148,230,1);
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#login{
+    color: rgb(28, 230, 230);
+    margin-left:5px;
+}
+#login:hover{
+    color: rgb(16, 145, 243);  
+}
+
+.navbar-item{
+margin-right: 75px;}
+
+.navbar-link{
+    color: rgb(28, 230, 230);
+}
+
+.navbar{
+    height:100px;
+}
+.btn{
+    margin:auto; 
+    display: flex;
+    width: 100px;
+    text-align: center;
+    font-size: 21px;
+    /* margin-left:270px; */
+}
+
+h1{
+    text-align:center ;
+}
+
+p{
+    text-align: center;
+
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: black;
+
+}
+
+h4{
+    color: aliceblue;
+    text-align: center;
+    margin-top: 50px;
+}
+.bi-person-circle{
+    color: aquamarine;
+}
+
+
+i:hover{
+    color: rgb(16, 145, 243);  
+} 
