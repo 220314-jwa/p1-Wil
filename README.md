@@ -3,7 +3,7 @@
 For this project, I created a full-stack application.
 
 ## Technology Used
-JDBC, AWS, Javalin, PostgreSql, Dbeaver, Cucumber, Selenium, Javascript, Bootstrap
+JDBC, AWS, Javalin, PostgreSql, Dbeaver, JUnit, Mockito, Cucumber, Selenium, Javascript, Bootstrap
 
 ## About the Application
 The following is the application I created.  
